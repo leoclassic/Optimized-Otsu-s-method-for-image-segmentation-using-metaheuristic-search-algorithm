@@ -50,7 +50,7 @@ while nfe < nFEs
     R2 = rand(NP,Dim);
     
     iteration = iteration+1;
-    w = wMin-iteration*(wMax-wMin)/MaxIter;
+    w = (MaxIter-iteration+1)/MaxIter * (wMax - wMin) + wMin;
     
     velocity = w*(velocity + c1*R1.*(pbest-population) + c2*R2.*(gbest-population));
     velocity = ( (velocity <= vmin).*vmin ) + ( (velocity > vmin).*velocity );
